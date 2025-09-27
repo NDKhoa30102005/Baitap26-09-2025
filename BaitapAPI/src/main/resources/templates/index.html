@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>GraphQL Assignment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 5px 0; }
+        .form-group { margin: 10px 0; }
+        input, button { padding: 5px; margin-right: 10px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Section: Sản phẩm sắp xếp theo giá -->
+    <h1>Sản phẩm sắp xếp theo giá (thấp đến cao)</h1>
+    <ul id="sortedProducts"></ul>
+
+    <!-- Section: Sản phẩm theo Category ID -->
+    <h1>Sản phẩm theo Category ID</h1>
+    <div class="form-group">
+        <input type="number" id="categoryId" placeholder="Nhập Category ID">
+        <button onclick="fetchProductsByCategory()">Lấy dữ liệu</button>
+    </div>
+    <ul id="categoryProducts"></ul>
+
+    <!-- Section: CRUD User -->
+    <h1>Quản lý User</h1>
+    <div id="userForm" class="form-group">
+        <input type="text" id="userFullname" placeholder="Họ tên" required>
+        <input type="email" id="userEmail" placeholder="Email" required>
+        <input type="password" id="userPassword" placeholder="Mật khẩu" required>
+        <input type="text" id="userPhone" placeholder="Số điện thoại">
+        <button onclick="createUser()">Tạo</button>
+        <input type="number" id="userIdUpdateDelete" placeholder="ID User" style="margin-left: 10px;">
+        <button onclick="showUpdateUserForm()">Cập nhật</button>
+        <button onclick="deleteUser()">Xóa</button>
+    </div>
+    <div id="updateUserForm" class="form-group hidden">
+        <input type="text" id="updateUserFullname" placeholder="Họ tên mới">
+        <input type="email" id="updateUserEmail" placeholder="Email mới">
+        <input type="password" id="updateUserPassword" placeholder="Mật khẩu mới">
+        <input type="text" id="updateUserPhone" placeholder="Số điện thoại mới">
+        <button onclick="updateUser()">Lưu</button>
+        <button onclick="hideUpdateUserForm()">Hủy</button>
+    </div>
+
+    <!-- Section: CRUD Category -->
+    <h1>Quản lý Category</h1>
+    <div id="categoryForm" class="form-group">
+        <input type="text" id="categoryName" placeholder="Tên Category" required>
+        <input type="text" id="categoryImages" placeholder="Đường dẫn ảnh">
+        <button onclick="createCategory()">Tạo</button>
+        <input type="number" id="categoryIdUpdateDelete" placeholder="ID Category" style="margin-left: 10px;">
+        <button onclick="showUpdateCategoryForm()">Cập nhật</button>
+        <button onclick="deleteCategory()">Xóa</button>
+    </div>
+    <div id="updateCategoryForm" class="form-group hidden">
+        <input type="text" id="updateCategoryName" placeholder="Tên Category mới">
+        <input type="text" id="updateCategoryImages" placeholder="Đường dẫn ảnh mới">
+        <button onclick="updateCategory()">Lưu</button>
+        <button onclick="hideUpdateCategoryForm()">Hủy</button>
+    </div>
+
+    <!-- Section: CRUD Product -->
+    <h1>Quản lý Product</h1>
+    <div id="productForm" class="form-group">
+        <input type="text" id="productTitle" placeholder="Tiêu đề" required>
+        <input type="number" id="productQuantity" placeholder="Số lượng" required>
+        <input type="text" id="productDescription" placeholder="Mô tả">
+        <input type="number" id="productPrice" step="0.01" placeholder="Giá" required>
+        <input type="number" id="productUserId" placeholder="ID User" required>
+        <input type="text" id="productCategoryIds" placeholder="ID Category (dùng dấu phẩy, ví dụ: 1,2)">
+        <button onclick="createProduct()">Tạo</button>
+        <input type="number" id="productIdUpdateDelete" placeholder="ID Product" style="margin-left: 10px;">
+        <button onclick="showUpdateProductForm()">Cập nhật</button>
+        <button onclick="deleteProduct()">Xóa</button>
+    </div>
+    <div id="updateProductForm" class="form-group hidden">
+        <input type="text" id="updateProductTitle" placeholder="Tiêu đề mới">
+        <input type="number" id="updateProductQuantity" placeholder="Số lượng mới">
+        <input type="text" id="updateProductDescription" placeholder="Mô tả mới">
+        <input type="number" id="updateProductPrice" step="0.01" placeholder="Giá mới">
+        <input type="number" id="updateProductUserId" placeholder="ID User mới">
+        <input type="text" id="updateProductCategoryIds" placeholder="ID Category mới (dùng dấu phẩy)">
+        <button onclick="updateProduct()">Lưu</button>
+        <button onclick="hideUpdateProductForm()">Hủy</button>
+    </div>
+
+    <!-- Liên kết tới file JavaScript -->
+    <script src="/js/main.js"></script>
+</body>
+</html>
